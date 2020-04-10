@@ -18,4 +18,5 @@ def do_clean(number=0):
     for l in lista:
         local("rm versions/"+l)
         m = l.split(".")
-        run("rm -rf /data/web_static/releases/"+m[0])
+        m = m[0]
+        run("rm -rf /data/web_static/releases/"+m+"/")
