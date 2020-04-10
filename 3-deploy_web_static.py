@@ -9,6 +9,7 @@ from datetime import datetime
 _path = None
 env.hosts = ["104.196.221.76", "18.234.234.222"]
 
+
 @runs_once
 def do_pack():
     try:
@@ -25,6 +26,7 @@ def do_pack():
         return name
     except:
         return None
+
 
 def do_deploy(archive_path):
     try:
@@ -49,6 +51,7 @@ def do_deploy(archive_path):
         return True
     except:
         return False
+
 
 def deploy():
     global _path
