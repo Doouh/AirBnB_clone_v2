@@ -15,7 +15,7 @@ def do_clean(number=0):
     lista = str(lista)
     lista = lista.split("\n")
 
-    if (len(lista) > 0):
+    if (len(lista) > 0 and lista[0] != ""):
         for l in lista:
             local("rm versions/"+l)
             m = l.split(".")
