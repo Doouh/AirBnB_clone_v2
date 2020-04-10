@@ -7,20 +7,6 @@ env.hosts = ["104.196.221.76", "18.234.234.222"]
 
 
 def do_clean(number=0):
-    if (number == '0' or number == '1'):
-        number = int(2)
-    else:
-        number = int(number) + 1
-    if number < 0:
-        return
-    lista = local("ls -t versions/ | tail -n+{}".format(number), capture=True)
-    lista = str(lista)
-    lista = lista.split("\n")
-
-    if (len(lista) > 0 and lista[0] != ""):
-        for l in lista:
-            local("rm versions/"+l)
-            m = l.split(".")
-            m = m[0]
-            print("rm -rf /data/web_static/releases/"+m+"/")
-            run("rm -rf /data/web_static/releases/"+m+"/")
+    number = int(number)
+    local("ls -d -ltr versions/ | tail -n + {} | xargs -d '\n' rm --".format(2 if number < 1 else number + 1))
+    run("ls -d -ltr /data/web_static/releases/ | tail -n + {} | xargs -d '\n' rm -f --".format(2 if number < 1 else number + 1)"
