@@ -11,6 +11,8 @@ def do_clean(number=0):
         number = int(2)
     else:
         number = int(number) + 1
+    if number < 0:
+        return
     lista = local("ls -t versions/ | tail -n+{}".format(number), capture=True)
     lista = str(lista)
     lista = lista.split("\n")
@@ -20,4 +22,5 @@ def do_clean(number=0):
             local("rm versions/"+l)
             m = l.split(".")
             m = m[0]
+            print("rm -rf /data/web_static/releases/"+m+"/")
             run("rm -rf /data/web_static/releases/"+m+"/")
