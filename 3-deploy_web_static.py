@@ -53,7 +53,7 @@ def do_deploy(archive_path):
 def deploy():
     global path
     if path is None:
-        path do_pack()
+        path = do_pack()
     if path is None:
         return False
     return do_deploy(path)
