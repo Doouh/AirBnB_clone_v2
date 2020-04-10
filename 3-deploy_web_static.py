@@ -6,7 +6,7 @@ from fabric.api import local, runs_once, env, put, run
 from os import stat, path
 from datetime import datetime
 
-path = None
+_path = None
 env.hosts = ["104.196.221.76", "18.234.234.222"]
 
 @runs_once
@@ -51,9 +51,9 @@ def do_deploy(archive_path):
         return False
 
 def deploy():
-    global path
-    if path is None:
-        path = do_pack()
-    if path is None:
+    global _path
+    if _path is None:
+        _path = do_pack()
+    if _path is None:
         return False
-    return do_deploy(path)
+    return do_deploy(_path)
