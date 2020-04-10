@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # Script that deletes out-of-date archives, using the function do_clean:
 
-from fabric.api import run, local
+from fabric.api import run, local, env
 
 env.hosts = ["104.196.221.76", "18.234.234.222"]
 
@@ -15,8 +15,9 @@ def do_clean(number=0):
     lista = str(lista)
     lista = lista.split("\n")
 
-    for l in lista:
-        local("rm versions/"+l)
-        m = l.split(".")
-        m = m[0]
-        run("rm -rf /data/web_static/releases/"+m+"/")
+    if (len(lista) > 0):
+        for l in lista:
+            local("rm versions/"+l)
+            m = l.split(".")
+            m = m[0]
+            run("rm -rf /data/web_static/releases/"+m+"/")
