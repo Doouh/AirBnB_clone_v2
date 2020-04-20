@@ -36,9 +36,14 @@ class DBStorage():
         classes = {'Place': Place, 'City': City, 'Amenity': Amenity,
                    'Review': Review, 'State': State, 'User': User}
         if cls:
-            for row in self.__session.query(classes[cls]):
-                key = "{}.{}".format(row.__class__.__name__, row.id)
-                lists[key] = row
+            if cls not in classes:
+                for row in self.__session.query(cls):
+                    key = "{}.{}".format(row.__class__.__name__, row.id)
+                    lists[key] = row
+            else:
+                for row in self.__session.query(classes[cls]):
+                    key = "{}.{}".format(row.__class__.__name__, row.id)
+                    lists[key] = row
         else:
             for rows in classes:
                 for row in self.__session.query(classes[rows]):
