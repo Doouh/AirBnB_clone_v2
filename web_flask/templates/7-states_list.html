@@ -8,7 +8,7 @@
 	{% if states -%}
 	<UL>
 	    {% for key, val in states.items() %}
-            <li>State: {{ val.id }}: <B>{{ val.name }}</B></li>
+            <li>{{ val.id }}: <B>{{ val.name }}</B></li>
     	    {% endfor %}
 	</UL>
 	{%- endif %}
