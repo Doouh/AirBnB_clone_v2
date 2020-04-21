@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<HTML lang="en">
+    <HEAD>
+        <TITLE>HBNB</TITLE>
+    </HEAD>
+    <BODY>
+	<H1>State</H1>
+	{% if states -%}
+	<UL>
+	    {% for key, val in states.items() %}
+            <li>State: {{ val.id }}: <B>{{ val.name }}</B></li>
+    	    {% endfor %}
+	</UL>
+	{%- endif %}
+    </BODY>
+</HTML>
